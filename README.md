@@ -1,10 +1,21 @@
-# It is Covid?
+# Where to Heal Me?
 
-*Sistema que permite identificar pertenencia a grupos vulnerables, además de predicción de diagnóstico de COVID-19*
+## Problemática
 
-- Obtener un modelo que permita determinar si una persona pertenece a uno de los grupos vulnerables de acuerdo a sus hábitos y/o padecimientos.
-- Desarrollar un sistema que permita realizar un diagnóstico predictivo de COVID-19, de acuerdo con métricas tales como temperatura, frecuencia respiratoria, entre otras.
+Muchos ciudadanos con síntomas de covid, requieren atención inmediata y pierden tiempo vital al trasladarse a hospitales en donde no hay cupo o no cuentan con el equipo necesario para ser atendidos.
 
-__El Covid es un problema que nos acecha a todos hoy en día.  El análisis de este tipo de padecimiento se ha convertido en un tema primordial de investigación, la minería de datos en conjunto con técnicas de Machine Learning son una excelente herramienta que puede ayudar a pronosticar este problema. Nuestro proyecto buscará lograr este objetivo, pronosticar la probabilidad de padecer Covid incluso antes de un examen médico, porque por ahora pocos se pueden permitir análisis de este tipo debido a su costo y escasez. Un sistema que pueda diagnosticar esta enfermedad en base sólo a síntomas y comportamientos que el paciente conoce está al alcance de más personas. Además, sí es posible advertir a una persona su pertenencia a uno de los grupos vulnerables y, junto con ello, ofrecer consejos de cuidado e higiene personal, se puede reducir la tasa de contagios, que afecta a los diferentes países del mundo.__
+## Solución
 
-Somos estudiante de ingeniería con background sobre Machine Learning y tecnologías para creación de aplicaciones web, creemos que la tecnología es necesaria en cualquier área como soporte para el ser humano, ya que facilita la realización de tareas de una forma mucho más efectiva además de ayudar a la reducción de costos.
+Creemos que la tecnología debe estar involucrada en la vida diaria de las personas ya que mejora y facilita la calidad de vida. Es por ello que crearemos una “Web app” que ayude a aquellos ciudadanos con síntomas de covid que requieran atención médica a que localicen rápidamente el centro de salud más cercano a su ubicación que cuente con capacidad hospitalaria suficiente para poder atenderlo.
+
+## Factor Diferencial
+
+A diferencia del mapa de la disponibilidad de los Hospitales en la Ciudad de México que provee el gobierno, nuestro producto es capaz de decirte de manera automática cual es el hospital más cercano dependiendo de la posición en la que te encuentras en el mapa y que tenga cupo suficiente para que seas atendido.
+
+De esta forma se pueden distribuir de mejor manera las largas filas actuales y se podrían atender a los pacientes de manera más eficiente.
+
+Mejora la movilidad ya que no tienes que desplazarte por toda la ciudad para encontrar un hospital donde puedan atenderte, sino que estas seguro de encontrar el que más te convenga.
+
+### Mockup Inicial de la Página Web
+
+![Mockup Inicial](images/MockUp.png)
