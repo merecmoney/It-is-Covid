@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import CardContainer from "./CardContainer";
 const getDistance = (p1, p2) => {
-  return Math.abs((p1[1] - p2[1]) / (p1[0] - p2[0]));
+  return Math.sqrt((p1[1] - p2[1]) ** 2 + (p1[0] - p2[0]) ** 2);
 };
 const ordenaHospitales = (hospitales, coordenadas_usuario) => {
   hospitales.sort((h1, h2) => {
@@ -14,7 +15,7 @@ const ordenaHospitales = (hospitales, coordenadas_usuario) => {
   return hospitales;
 };
 export default function Test() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState(new Map());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,25 @@ export default function Test() {
         const response = await axios.get(
           "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=100&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
         );
+        // Clave para llamar API
+        // AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo
+        //origin=41.43206,-81.38992
         const coordenadas_usuario = [19.52, -99.1];
+        // COORDENADAS CENTRO MEDICO 19.4064° N, 99.1550° W
+        //https://maps.googleapis.com/maps/api/directions/json?origin=&destination=&key=AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo
+
+        const distanciaGoogleMaps = await axios.get(
+          `https://maps.googleapis.com/maps/api/directions/json?origin=${
+            coordenadas_usuario[0]
+          },${
+            coordenadas_usuario[1]
+          }&destination=${19.4064},${99.155}&key=AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo`
+        );
+        // const address = await axios.get(
+        //   `https://maps.googleapis.com/maps/api/geocode/json?latlng=${19.4064},${99.155}&key=AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo`
+        // );
+        console.log(distanciaGoogleMaps);
+
         const data = response.data;
         const hospitales = data.records;
         const hospitales_cercanos = ordenaHospitales(
@@ -39,15 +58,13 @@ export default function Test() {
           }
         }
 
-        console.log(HospitalesMap);
-
         setData((prevState) => {
-          let newState = { ...prevState };
-          newState = { ...data.records[0] };
+          let newState = prevState;
+          newState = HospitalesMap;
           return newState;
         });
-        console.log("I am fetching the data");
       } catch (error) {
+        console.log("ERROR RECUPERANDO DATOS");
         console.log(error);
       }
     };
@@ -56,7 +73,7 @@ export default function Test() {
   return (
     <>
       <div style={{ backgroundColor: "green" }}>
-        <p>{data.datasetid}</p>
+        <CardContainer data={data} />
       </div>
     </>
   );

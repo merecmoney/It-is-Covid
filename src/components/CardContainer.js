@@ -1,13 +1,23 @@
-import React from "react";
-import Card from "Card";
-import "../index.css";
+import React, { useEffect } from "react";
+import Card from "./Card";
 
-class CardContainer extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const CardContainer = ({ data }) => {
+  useEffect(() => {
+    renderHospitals(data);
+  }, [data]);
 
-  render() {
-    return "Hola";
-  }
-}
+  const renderHospitals = (data) => {
+    if (data) {
+      const cards = [];
+      for (const hospital of data) {
+        cards.push();
+      }
+    } else {
+      return <p>Loading</p>;
+    }
+  };
+
+  return <></>;
+};
+
+export default CardContainer;
