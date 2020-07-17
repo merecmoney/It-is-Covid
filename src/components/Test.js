@@ -30,17 +30,17 @@ export default function Test() {
         // COORDENADAS CENTRO MEDICO 19.4064° N, 99.1550° W
         //https://maps.googleapis.com/maps/api/directions/json?origin=&destination=&key=AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo
 
-        const distanciaGoogleMaps = await axios.get(
-          `https://maps.googleapis.com/maps/api/directions/json?origin=${
-            coordenadas_usuario[0]
-          },${
-            coordenadas_usuario[1]
-          }&destination=${19.4064},${99.155}&key=AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo`
-        );
-        // const address = await axios.get(
-        //   `https://maps.googleapis.com/maps/api/geocode/json?latlng=${19.4064},${99.155}&key=AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo`
+        // const distanciaGoogleMaps = await axios.get(
+        //   `https://maps.googleapis.com/maps/api/directions/json?origin=${
+        //     coordenadas_usuario[0]
+        //   },${
+        //     coordenadas_usuario[1]
+        //   }&destination=${19.4064},${99.155}&key=AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo`
         // );
-        console.log(distanciaGoogleMaps);
+        // // const address = await axios.get(
+        // //   `https://maps.googleapis.com/maps/api/geocode/json?latlng=${19.4064},${99.155}&key=AIzaSyDUMQQPU_1PuZdrqKFrRzFlYs-4W6WGrpo`
+        // // );
+        // console.log(distanciaGoogleMaps);
 
         const data = response.data;
         const hospitales = data.records;

@@ -13,7 +13,7 @@ const CardContainer = ({ data }) => {
             name : hospital.nombre_hospital,
             distance: 159,
             occupation: hospital.estatus_capacidad_hospitalaria,
-            address: "Hola",
+            address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et massa non.",
             image: "https://via.placeholder.com/150"
           }
       );
@@ -22,16 +22,19 @@ const CardContainer = ({ data }) => {
     return <p>Loading</p>;
   }
 
-  return <>
+  return (<div className="card-grid">
     {
-      cards.map(card => (
-        <Card
-          key={shortid.generate()}
-          hospital={card}
+      cards.map(card => ( <
+        Card key = {
+          shortid.generate()
+        }
+        hospital = {
+          card
+        }
         />
       ))
     }
-  </>;
+    </div>);
 };
 
 export default CardContainer;
