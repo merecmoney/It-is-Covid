@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Test from "./components/Test";
 import CardContainer from "./components/CardContainer";
@@ -13,6 +13,7 @@ function App() {
         const response = await axios.get(
           "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=100&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
         );
+        // "https://api.mapbox.com/directions/v5/mapbox/driving/19.195300,99.110500;19.406400,99.150500?geometries=geojson&access_token=pk.eyJ1IjoibWVyZWNtb25leSIsImEiOiJja2NzbHRtdGswejRpMnVtcWhpMm1vdG5tIn0.Lj4G9YQJozP1TsNLnOvkfQ"
 
         const data = response.data;
         const hospitales = data.records;
@@ -39,13 +40,11 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(data)
+  console.log(data);
   return (
     <>
-      <CardContainer
-        data={Array.from(data.values())}
-      />
-      {/* <Test></Test> */}
+      <CardContainer data={Array.from(data.values())} />
+      <Test></Test>
     </>
   );
 }
