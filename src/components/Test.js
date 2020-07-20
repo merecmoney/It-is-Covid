@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Children } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Test() {
@@ -7,7 +7,6 @@ export default function Test() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const coordenadas_usuario = [19.52, -99.1];
         if ("geolocation" in navigator) {
           navigator.geolocation.getCurrentPosition((pos) => {
             setCoords({
@@ -18,12 +17,11 @@ export default function Test() {
         } else {
           console.log("Not Available");
         }
-        console.log(coords);
-
         const rew = await axios.get(
-          "https://api.mapbox.com/directions/v5/mapbox/driving/-99.110500,19.195300;-99.150500,19.406400?geometries=geojson&access_token=pk.eyJ1IjoibWVyZWNtb25leSIsImEiOiJja2NzbWNsMHYxZ3AwMnBvYng4ZjBoMWZsIn0.zMLApohrEBIAv7g4hyajaQ"
+          "https://api.mapbox.com/directions/v5/mapbox/driving/-99.192868,19.336675;-99.150500,19.406400?geometries=geojson&access_token=pk.eyJ1IjoibWVyZWNtb25leSIsImEiOiJja2NzbWNsMHYxZ3AwMnBvYng4ZjBoMWZsIn0.zMLApohrEBIAv7g4hyajaQ"
         );
-        console.log(rew);
+        console.log("distance -> ", rew.data.routes[0].distance);
+        console.log("duration -> ", rew.data.routes[0].duration);
       } catch (error) {
         console.log("ERROR RECUPERANDO DATOS");
         console.log(error);
