@@ -80,32 +80,25 @@ body {
   color: #e2261a;
 }
 
-@media (min-width: 768px) {
-  .card-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .navbar {
   width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
 }
 
 .menu-white {
   background: white;
   color: #4975e9;
-  font-size: 2rem;
   border-radius: 0px 0px 20px 20px;
 }
 
 .menu-blue {
   background: #4975e9;
   color: white;
-  font-size: 2rem;
   border-radius: 0px 0px 20px 20px;
 }
 
@@ -120,4 +113,14 @@ body {
 .menu-white i,
 .menu-blue i {
   padding-left: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .navbar {
+    font-size: 2rem;
+  }
 }
