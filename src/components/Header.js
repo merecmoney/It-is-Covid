@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
 
-const Card = ({ hospital }) => {
+const Hea = ({ hospital }) => {
   let classColor;
   switch (hospital.occupation) {
     case "Buena":

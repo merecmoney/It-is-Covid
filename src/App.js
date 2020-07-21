@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import CardContainer from "./components/CardContainer";
+import Navbar from "./components/Navbar";
+// Direcciones de los Hospitales de la CDMX
+import dirrecciones from "./direcciones.json";
+import axios from "axios";
 
 const getCoords = () => {
   let coords = [0, 0];
@@ -23,30 +26,39 @@ function App() {
       try {
         // Fetching hospitals capability
         const response = await axios.get(
-          "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=8&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
+          "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=100&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
         );
 
         // Setting the hospitals data.
 
         const data = response.data;
         const hospitales = data.records;
-
-        let HospitalesMap = new Map();
+        let petitions = [];
         for (const record of hospitales) {
-          const nombreHospital = record.fields.nombre_hospital;
           const lat = record.fields.coordenadas[0];
           const lng = record.fields.coordenadas[1];
-          const address = await axios.get(
-            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyDTBQ3ElkgSu78OT5mAxkTGPR5O04454-k`
-          );
-          const dir = address.data.results[0].formatted_address;
-          const map_req = await axios.get(
+          const duration_time = axios.get(
             `https://api.mapbox.com/directions/v5/mapbox/driving/${lng},${lat};${coords[1]},${coords[0]}?geometries=geojson&access_token=pk.eyJ1IjoibWVyZWNtb25leSIsImEiOiJja2NzbWNsMHYxZ3AwMnBvYng4ZjBoMWZsIn0.zMLApohrEBIAv7g4hyajaQ`
           );
+          petitions.push(duration_time);
+        }
+        const map_req = await axios.all(petitions);
+
+        let HospitalesMap = new Map();
+        for (let k = 0; k < hospitales.length; k++) {
+          // objeto con los datos del hospital
+          let record = hospitales[k];
+          // nombre del Hospital
+          const nombreHospital = record.fields.nombre_hospital;
+          // obtener la dirección del Hospital dado su Nombre
+          const dir = dirrecciones[nombreHospital];
+          // objeto con los datos del Hospital, la distancia en KM del hospital
+          // al punto dónde está el usuario, el tiempo desde dónde está el
+          // usuario hasta el hospital y la dirección del hospital
           const informacionHospital = {
             ...record.fields,
-            distance: map_req.data.routes[0].distance || 0,
-            time: map_req.data.routes[0].duration || 0,
+            distance: map_req[k].data.routes[0].distance || 0,
+            time: map_req[k].data.routes[0].duration || 0,
             direccion: dir,
           };
           if (!HospitalesMap.get(nombreHospital)) {
@@ -70,6 +82,7 @@ function App() {
 
   return (
     <>
+      <Navbar />
       <CardContainer data={Array.from(data.values())} />
     </>
   );

@@ -5,9 +5,12 @@ img {
 /* font-family: 'Archivo Black', sans-serif;
 font-family: 'Roboto', sans-serif; */
 
+body {
+  background-color: #e5e5e5;
+}
+
 .card-grid {
   display: grid;
-  background-color: #e5e5e5;
   grid-template-columns: repeat(1, 1fr);
 }
 
@@ -79,6 +82,42 @@ font-family: 'Roboto', sans-serif; */
 
 @media (min-width: 768px) {
   .card-grid {
-      grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.navbar {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+.menu-white {
+  background: white;
+  color: #4975e9;
+  font-size: 2rem;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.menu-blue {
+  background: #4975e9;
+  color: white;
+  font-size: 2rem;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.menu-white,
+.menu-blue {
+  width: 300px;
+  padding: 0 1rem;
+  border: 1px solid red;
+  text-align: center;
+}
+
+.menu-white i,
+.menu-blue i {
+  padding-left: 1rem;
 }
