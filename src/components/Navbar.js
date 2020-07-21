@@ -6,12 +6,12 @@ const Navbar = () => {
     <div className='navbar'>
       <div id='hospital-menu' className='menu-blue'>
         <p>
-          <i className='fas fa-hospital'> Hospitales</i>
+          <i className='fas fa-hospital'></i> Hospitales
         </p>
       </div>
       <div id='mapa-menu' className='menu-white'>
         <p>
-          <i className='fas fa-map-marked-alt'> Mapa</i>
+          <i className='fas fa-map-marked-alt'></i> Mapa
         </p>
       </div>
     </div>

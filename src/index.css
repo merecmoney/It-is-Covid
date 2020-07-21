@@ -81,13 +81,12 @@ body {
 }
 
 .navbar {
-  width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   font-family: 'Archivo Black', sans-serif;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .menu-white {
@@ -106,7 +105,6 @@ body {
 .menu-blue {
   width: 300px;
   padding: 0 1rem;
-  border: 1px solid red;
   text-align: center;
 }
 
