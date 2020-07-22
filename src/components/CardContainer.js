@@ -7,19 +7,26 @@ const CardContainer = ({ data }) => {
 
   if (data) {
     for (const hospital of data) {
+
+      let scrImage = hospital.nombre_hospital.replace(new RegExp("\"", "g"), "");
+      scrImage = scrImage.replace(new RegExp(" ", "g"), "\\ ");
+      scrImage = scrImage.replace(new RegExp("\\(", "g"), "\\(");
+      scrImage = scrImage.replace(new RegExp("\\)", "g"), "\\)");
+
       cards.push({
         name: hospital.nombre_hospital,
         distance: Number(hospital.distance / 1000).toFixed(2),
         occupation: hospital.estatus_capacidad_hospitalaria,
         address: hospital.direccion,
         time: hospital.time,
-        image: "https://via.placeholder.com/150",
+        image: `/images/${scrImage}.jpg`,
       });
     }
   } else {
     return <p>Loading</p>;
   }
 
+  console.log(cards);
   return (
     <Fragment>
       <h1 className="main-title">Tus hospitales mas cercanos</h1>

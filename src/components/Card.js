@@ -31,9 +31,13 @@ const Card = ({ hospital }) => {
     return stringH + m + ' minutos';
   };
 
+  console.log(hospital.image);
+
   return (
     <div className="card">
-      <div className="img-hospital"></div>
+      <div className="img-hospital" style={{
+        backgroundImage: `url(${hospital.image})`
+      }}></div>
       <div className="card-title">
         <h2>{hospital.name}</h2>
         <i className="fas fa-map-marker-alt"></i>
