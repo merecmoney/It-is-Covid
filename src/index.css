@@ -57,7 +57,9 @@ body {
   font-size: 20px;
   font-weight: 700;
 }
-
+.card-direction {
+  padding: 0 1rem;
+}
 .card-title h2 {
   font-weight: bold;
 }
@@ -111,6 +113,13 @@ body {
 .menu-white i,
 .menu-blue i {
   padding-right: 0.5rem;
+}
+
+.info-card {
+  display: flex;
+  height: calc(100% - 150px);
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @media (min-width: 768px) {

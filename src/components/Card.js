@@ -21,27 +21,31 @@ const Card = ({ hospital }) => {
     let h = Math.floor(timeInSeconds / 3600);
     let m = Math.floor((timeInSeconds % 3600) / 60);
 
-    let stringH = '';
+    let stringH = "";
     if (h === 1) {
-      stringH = '1 hora ';
+      stringH = "1 hora ";
     } else if (h > 1) {
-      stringH = h + 'horas ';
+      stringH = h + "horas ";
     }
 
-    return stringH + m + ' minutos';
+    return stringH + m + " minutos";
   };
 
   return (
-    <div className="card">
-      <div className="img-hospital"></div>
-      <div className="card-title">
-        <h2>{hospital.name}</h2>
-        <i className="fas fa-map-marker-alt"></i>
-      </div>
-      <p>{hospital.address}</p>
-      <div className='card-info'>
-        <p className='distance'>{convertSeconds(hospital.time)}</p>
-        <p className={classColor}>{hospital.occupation}</p>
+    <div className='card'>
+      <div className='img-hospital'></div>
+      <div className='info-card'>
+        <div className='card-title'>
+          <h2>{hospital.name}</h2>
+          <i className='fas fa-map-marker-alt'></i>
+        </div>
+        <div className='card-direction'>
+          <p>{hospital.address}</p>
+        </div>
+        <div className='card-info'>
+          <p className='distance'>{convertSeconds(hospital.time)}</p>
+          <p className={classColor}>{hospital.occupation}</p>
+        </div>
       </div>
     </div>
   );
