@@ -59,7 +59,7 @@ body {
 }
 
 .card-title h2 {
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .card-title i {
@@ -84,8 +84,8 @@ body {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  font-family: 'Archivo Black', sans-serif;
-  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
   font-size: 1.2rem;
 }
 
@@ -110,7 +110,7 @@ body {
 
 .menu-white i,
 .menu-blue i {
-  padding-left: 1rem;
+  padding-right: 0.5rem;
 }
 
 @media (min-width: 768px) {
@@ -120,5 +120,18 @@ body {
 
   .navbar {
     font-size: 2rem;
+  }
+}
+
+.main-title{
+  margin: 2rem;
+  font-family: 'Archivo Black', sans-serif;
+  color: #44444A;
+  font-size: 25px;
+}
+
+@media (min-width: 768px){
+  .main-title{
+    text-align: center;
   }
 }

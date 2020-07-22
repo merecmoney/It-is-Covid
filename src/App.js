@@ -83,7 +83,11 @@ function App() {
   return (
     <>
       <Navbar />
-      <CardContainer data={Array.from(data.values())} />
+      <CardContainer data={
+        Array.from(data.values()).sort((a, b) => {
+          return a.time - b.time;
+        })
+      } />
     </>
   );
 }
