@@ -55,7 +55,9 @@ body {
   font-size: 20px;
   font-weight: 700;
 }
-
+.card-direction {
+  padding: 0 1rem;
+}
 .card-title h2 {
   font-weight: bold;
 }
@@ -82,7 +84,7 @@ body {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -111,6 +113,13 @@ body {
   padding-right: 0.5rem;
 }
 
+.info-card {
+  display: flex;
+  height: calc(100% - 150px);
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 @media (min-width: 768px) {
   .card-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -121,15 +130,15 @@ body {
   }
 }
 
-.main-title{
+.main-title {
   margin: 2rem;
-  font-family: 'Archivo Black', sans-serif;
-  color: #44444A;
+  font-family: "Archivo Black", sans-serif;
+  color: #44444a;
   font-size: 25px;
 }
 
-@media (min-width: 768px){
-  .main-title{
+@media (min-width: 768px) {
+  .main-title {
     text-align: center;
   }
 }

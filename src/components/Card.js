@@ -21,14 +21,14 @@ const Card = ({ hospital }) => {
     let h = Math.floor(timeInSeconds / 3600);
     let m = Math.floor((timeInSeconds % 3600) / 60);
 
-    let stringH = '';
+    let stringH = "";
     if (h === 1) {
-      stringH = '1 hora ';
+      stringH = "1 hora ";
     } else if (h > 1) {
-      stringH = h + 'horas ';
+      stringH = h + "horas ";
     }
 
-    return stringH + m + ' minutos';
+    return stringH + m + " minutos";
   };
 
   console.log(hospital.image);

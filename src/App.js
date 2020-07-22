@@ -1,13 +1,15 @@
-import React, { useEffect, useState, Children } from "react";
+import React, { useEffect, useState } from "react";
 import CardContainer from "./components/CardContainer";
 import Navbar from "./components/Navbar";
 // Direcciones de los Hospitales de la CDMX
 import dirrecciones from "./direcciones.json";
 import axios from "axios";
+import useFullpageLoader from "./components/useFullpageLoader";
 
 function App() {
   const [data, setData] = useState(new Map());
   const [coords, setCoords] = useState([0, 0]);
+  const [loader, showLoader, hideLoader] = useFullpageLoader();
 
   useEffect(() => {
     var promise1 = new Promise(function (resolve, reject) {
@@ -27,6 +29,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    showLoader();
     const fetchData = async () => {
       try {
         // Fetching hospitals capability
@@ -73,6 +76,7 @@ function App() {
             HospitalesMap.set(nombreHospital, informacionHospital);
           }
         }
+        hideLoader();
 
         setData((prevState) => {
           let newState = prevState;
@@ -90,14 +94,15 @@ function App() {
   }, [coords]);
 
   return (
-    <>
+    <div>
       <Navbar />
-      <CardContainer data={
-        Array.from(data.values()).sort((a, b) => {
+      <CardContainer
+        data={Array.from(data.values()).sort((a, b) => {
           return a.time - b.time;
-        })
-      } />
-    </>
+        })}
+      />
+      {loader}
+    </div>
   );
 }
 
