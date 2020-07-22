@@ -12,6 +12,7 @@ const CardContainer = ({ data }) => {
         distance: Number(hospital.distance / 1000).toFixed(2),
         occupation: hospital.estatus_capacidad_hospitalaria,
         address: hospital.direccion,
+        time: hospital.time,
         image: "https://via.placeholder.com/150",
       });
     }
