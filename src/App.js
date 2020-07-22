@@ -1,32 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Children } from "react";
 import CardContainer from "./components/CardContainer";
 import Navbar from "./components/Navbar";
 // Direcciones de los Hospitales de la CDMX
 import dirrecciones from "./direcciones.json";
 import axios from "axios";
 
-const getCoords = () => {
-  let coords = [0, 0];
-  if ("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition((pos) => {
-      coords[0] = Number(pos.coords.latitude).toFixed(4);
-      coords[1] = Number(pos.coords.longitude).toFixed(4);
-    });
-  } else {
-    console.log("Not Available to locate your position");
-  }
-  return coords;
-};
 function App() {
   const [data, setData] = useState(new Map());
-  const coords = getCoords();
+  const [coords, setCoords] = useState([0, 0]);
+
+  useEffect(() => {
+    var promise1 = new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+        resolve({ lat, lon });
+      });
+    });
+    promise1.then(function (value) {
+      setCoords((prevState) => {
+        let newState = prevState;
+        newState = [Number(value.lat).toFixed(4), Number(value.lon).toFixed(4)];
+        return newState;
+      });
+    });
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         // Fetching hospitals capability
+        console.log("antes cdmx");
         const response = await axios.get(
-          "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=100&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
+          "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=3&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
         );
 
         // Setting the hospitals data.
@@ -42,7 +48,9 @@ function App() {
           );
           petitions.push(duration_time);
         }
+        console.log("antes");
         const map_req = await axios.all(petitions);
+        console.log("despues");
 
         let HospitalesMap = new Map();
         for (let k = 0; k < hospitales.length; k++) {
@@ -76,9 +84,10 @@ function App() {
       }
     };
     if (coords[0] !== 0) {
+      console.log("not coordinates");
       fetchData();
     }
-  }, []);
+  }, [coords]);
 
   return (
     <>
