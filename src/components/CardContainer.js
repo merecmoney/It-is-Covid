@@ -26,7 +26,6 @@ const CardContainer = ({ data , location}) => {
   }
 
 
-
   // console.log(cards);
   return (
     <Fragment>
