@@ -22,15 +22,28 @@ body {
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
   margin: 8%;
 }
-
-.card > p {
+.over-map-card {
+  height: auto;
+  border-radius: 30px;
+  font-family: "Roboto", sans-serif;
+  background-color: #fff;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  position: absolute;
+  bottom: 0;
+  right: 2;
+  z-index: 100;
+}
+.card,
+.over-map-card > p {
   color: #998383;
   padding: 0 4%;
   border-radius: 30px;
   font-size: 0.8rem;
 }
 
-.card .img-hospital {
+.card,
+.over-map-card .img-hospital {
   background-size: cover;
   background-position: center center;
   width: 100%;

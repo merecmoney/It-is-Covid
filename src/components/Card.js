@@ -39,13 +39,18 @@ const Card = ({ hospital, location}) => {
   }
 
   return (
-    <div onClick={() => goMaps(hospital.address)} className="card">
-      <div className="img-hospital" style={{
-        backgroundImage: `url(${hospital.image})`
-      }}></div>
-      <div className="card-title">
+    <div className={hospital.over_map ? "over-map-card" : "card"}
+        onClick={() => goMaps(hospital.address)}
+    >
+      <div
+        className='img-hospital'
+        style={{
+          backgroundImage: `url(${hospital.image})`,
+        }}
+      ></div>
+      <div className='card-title'>
         <h2>{hospital.name}</h2>
-        <i className="fas fa-map-marker-alt"></i>
+        <i className='fas fa-map-marker-alt'></i>
       </div>
       <p>{hospital.address}</p>
       <div className='card-info'>

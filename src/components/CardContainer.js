@@ -7,8 +7,7 @@ const CardContainer = ({ data , location}) => {
 
   if (data) {
     for (const hospital of data) {
-
-      let scrImage = hospital.nombre_hospital.replace(new RegExp("\"", "g"), "");
+      let scrImage = hospital.nombre_hospital.replace(new RegExp('"', "g"), "");
       scrImage = scrImage.replace(new RegExp(" ", "g"), "\\ ");
       scrImage = scrImage.replace(new RegExp("\\(", "g"), "\\(");
       scrImage = scrImage.replace(new RegExp("\\)", "g"), "\\)");
