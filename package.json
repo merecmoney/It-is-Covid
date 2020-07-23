@@ -7,12 +7,9 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
-<<<<<<< HEAD
     "google-maps-react": "^2.0.6",
-=======
     "express": "^4.17.1",
     "if-env": "^1.0.4",
->>>>>>> 5feb7b572c5f742fa01fcad452ecf113af3f6bfe
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
