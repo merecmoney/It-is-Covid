@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Card from "./Card";
 import shortid from "shortid";
 
-const CardContainer = ({ data }) => {
+const CardContainer = ({ data , location}) => {
   const cards = [];
 
   if (data) {

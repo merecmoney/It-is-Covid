@@ -1,0 +1,5 @@
+---
+applications:
+  - name: WHERE-TO-HEAL-ME
+    memory: 300M
+    command: npm run deploy

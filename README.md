@@ -18,4 +18,4 @@ Mejora la movilidad ya que no tienes que desplazarte por toda la ciudad para enc
 
 ### Mockup Inicial de la Página Web
 
-![Mockup Inicial](images/MockUp.png)
+![Mockup Inicial](/public/images/MockUp.png)

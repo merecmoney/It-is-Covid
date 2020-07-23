@@ -35,7 +35,7 @@ function App() {
     const fetchData = async () => {
       try {
         // Fetching hospitals capability
-        console.log("antes cdmx");
+        // console.log("antes cdmx");
         const response = await axios.get(
           "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=5&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
         );
@@ -53,9 +53,9 @@ function App() {
           );
           petitions.push(duration_time);
         }
-        console.log("antes");
+        // console.log("antes");
         const map_req = await axios.all(petitions);
-        console.log("despues");
+        // console.log("despues");
 
         let HospitalesMap = new Map();
         for (let k = 0; k < hospitales.length; k++) {
