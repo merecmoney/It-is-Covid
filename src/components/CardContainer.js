@@ -7,8 +7,7 @@ const CardContainer = ({ data }) => {
 
   if (data) {
     for (const hospital of data) {
-
-      let scrImage = hospital.nombre_hospital.replace(new RegExp("\"", "g"), "");
+      let scrImage = hospital.nombre_hospital.replace(new RegExp('"', "g"), "");
       scrImage = scrImage.replace(new RegExp(" ", "g"), "\\ ");
       scrImage = scrImage.replace(new RegExp("\\(", "g"), "\\(");
       scrImage = scrImage.replace(new RegExp("\\)", "g"), "\\)");
@@ -26,15 +25,14 @@ const CardContainer = ({ data }) => {
     return <p>Loading</p>;
   }
 
-  console.log(cards);
   return (
     <Fragment>
-      <h1 className="main-title">Tus hospitales mas cercanos</h1>
-    <div className='card-grid'>
-      {cards.map((card) => (
-        <Card key={shortid.generate()} hospital={card} />
-      ))}
-    </div>
+      <h1 className='main-title'>Tus hospitales mas cercanos</h1>
+      <div className='card-grid'>
+        {cards.map((card) => (
+          <Card key={shortid.generate()} hospital={card} />
+        ))}
+      </div>
     </Fragment>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CardContainer from "./components/CardContainer";
 import Navbar from "./components/Navbar";
+import MapContainer from "./components/MapContainer";
+
 // Direcciones de los Hospitales de la CDMX
 import dirrecciones from "./direcciones.json";
 import axios from "axios";
@@ -35,7 +37,7 @@ function App() {
         // Fetching hospitals capability
         console.log("antes cdmx");
         const response = await axios.get(
-          "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=100&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
+          "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=5&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
         );
 
         // Setting the hospitals data.
@@ -96,11 +98,18 @@ function App() {
   return (
     <div>
       <Navbar />
-      <CardContainer
-        data={Array.from(data.values()).sort((a, b) => {
-          return a.time - b.time;
-        })}
-      />
+      {coords[0] !== 0 ? (
+        <MapContainer
+          data={data}
+          numLocations={data.entries.length}
+          first_hospital={Array.from(data.keys())[0]}
+          center={{ lat: coords[0], lng: coords[1] }}
+        ></MapContainer>
+      ) : (
+        <div>
+          <p>Hola</p>
+        </div>
+      )}
       {loader}
     </div>
   );
