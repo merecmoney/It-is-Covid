@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import Card from "./Card";
 import shortid from "shortid";
 
-const CardContainer = ({ data }) => {
+const CardContainer = ({ data , location}) => {
   const cards = [];
 
   if (data) {
@@ -26,18 +26,19 @@ const CardContainer = ({ data }) => {
     return <p>Loading</p>;
   }
 
- 
+
 
   // console.log(cards);
   return (
     <Fragment>
       <h1 className="main-title">Tus hospitales mas cercanos</h1>
-      
+
     <div className='card-grid'>
       {cards.map((card) => (
-        <Card 
-          key={shortid.generate()} 
-          hospital={card} 
+        <Card
+          key={shortid.generate()}
+          hospital={card}
+          location={location}
         />
       ))}
     </div>

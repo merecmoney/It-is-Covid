@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
 
-const Card = ({ hospital }) => {
+const Card = ({ hospital, location}) => {
   let classColor;
   switch (hospital.occupation) {
     case "Buena":
@@ -35,9 +35,7 @@ const Card = ({ hospital }) => {
 
   function goMaps(address)  {
     let newAddress = address.split(" ").join("+");
-    console.log(newAddress);
-    window.location = "https://www.google.com/maps/search/"+newAddress;
-    // console.log(card.address);
+    window.open(`https://www.google.com/maps/dir/?api=1&origin=${location.lat},${location.log}&destination=${newAddress}&travelmode=driving`, "_blank");
   }
 
   return (

@@ -100,6 +100,11 @@ function App() {
         data={Array.from(data.values()).sort((a, b) => {
           return a.time - b.time;
         })}
+
+        location = {{
+          lat: coords[0],
+          log: coords[1]
+        }}
       />
       {loader}
     </div>
