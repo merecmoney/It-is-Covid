@@ -31,10 +31,17 @@ const Card = ({ hospital }) => {
     return stringH + m + " minutos";
   };
 
-  console.log(hospital.image);
+  // console.log(hospital.image);
+
+  function goMaps(address)  {
+    let newAddress = address.split(" ").join("+");
+    console.log(newAddress);
+    window.location = "https://www.google.com/maps/search/"+newAddress;
+    // console.log(card.address);
+  }
 
   return (
-    <div className="card">
+    <div onClick={() => goMaps(hospital.address)} className="card">
       <div className="img-hospital" style={{
         backgroundImage: `url(${hospital.image})`
       }}></div>
