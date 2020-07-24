@@ -37,7 +37,7 @@ function App() {
         // Fetching hospitals capability
         // console.log("antes cdmx");
         const response = await axios.get(
-          "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=5&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
+          "https://datos.cdmx.gob.mx/api/records/1.0/search/?dataset=capacidad-hospitalaria&q=&rows=100&sort=fecha&facet=fecha&facet=nombre_hospital&facet=institucion&facet=estatus_capacidad_hospitalaria&facet=estatus_capacidad_uci"
         );
 
         // Setting the hospitals data.
@@ -98,7 +98,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <CardContainer
+      {/* <CardContainer
         data={Array.from(data.values()).sort((a, b) => {
           return a.time - b.time;
         })}
@@ -107,8 +107,8 @@ function App() {
           lat: coords[0],
           log: coords[1]
         }}
-      />
-      {/* {coords[0] !== 0 ? (
+      /> */}
+      {coords[0] !== 0 ? (
         <MapContainer
           data={data}
           numLocations={data.entries.length}
@@ -119,7 +119,7 @@ function App() {
         <div>
           <p>Hola</p>
         </div>
-      )} */}
+      )}
       {loader}
     </div>
   );

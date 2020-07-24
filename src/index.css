@@ -22,6 +22,7 @@ body {
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
   margin: 8%;
 }
+
 .over-map-card {
   height: auto;
   border-radius: 30px;
@@ -34,7 +35,8 @@ body {
   right: 2;
   z-index: 100;
 }
-.card,
+
+.card > p,
 .over-map-card > p {
   color: #998383;
   padding: 0 4%;
@@ -42,7 +44,7 @@ body {
   font-size: 0.8rem;
 }
 
-.card,
+.card .img-hospital,
 .over-map-card .img-hospital {
   background-size: cover;
   background-position: center center;

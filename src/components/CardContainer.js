@@ -19,6 +19,7 @@ const CardContainer = ({ data , location}) => {
         address: hospital.direccion,
         time: hospital.time,
         image: `/images/${scrImage}.jpg`,
+        over_map: false,
       });
     }
   } else {
