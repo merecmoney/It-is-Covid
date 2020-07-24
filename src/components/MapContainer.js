@@ -2,7 +2,6 @@ import React from "react";
 import Card from "./Card";
 import "../index.css";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -50,7 +49,7 @@ export class MapContainer extends React.Component {
           google={this.props.google}
           zoom={14}
           initialCenter={{ ...this.props.center }}
-          style={{ width: "100%", height: "50%" }}
+          style={{ width: "100%", height: "90%" }}
         >
           <Marker
             title={"Aqui estas tu"}
@@ -62,6 +61,13 @@ export class MapContainer extends React.Component {
               onClick={this.onMarkerClick}
               title={key}
               name={key}
+              icon={{
+                url: `./clinic-medical-${
+                  this.props.data.get(key).estatus_capacidad_uci
+                }.png`,
+                scaledSize: new this.props.google.maps.Size(54, 54),
+              }}
+              style={{ color: "red", backgroundColor: "blue" }}
               position={{
                 lat: this.props.data.get(key).coordenadas[0],
                 lng: this.props.data.get(key).coordenadas[1],
