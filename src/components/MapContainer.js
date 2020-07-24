@@ -44,12 +44,12 @@ export class MapContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <Map
           google={this.props.google}
           zoom={14}
           initialCenter={{ ...this.props.center }}
-          style={{ width: "100%", height: "90%" }}
+          style={{ width: "100%", height: "100%" }}
         >
           <Marker
             title={"Aqui estas tu"}
@@ -76,7 +76,7 @@ export class MapContainer extends React.Component {
           ))}
         </Map>
         <Card hospital={this.state} />
-      </div>
+      </>
     );
   }
 }

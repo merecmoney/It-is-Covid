@@ -12,6 +12,12 @@ function App() {
   const [data, setData] = useState(new Map());
   const [coords, setCoords] = useState([0, 0]);
   const [loader, showLoader, hideLoader] = useFullpageLoader();
+  const [page, setpage] = useState("hospital-menu");
+
+  const onClick = (evt) => {
+    evt.preventDefault();
+    setpage(evt.target.id);
+  };
 
   useEffect(() => {
     var promise1 = new Promise(function (resolve, reject) {
@@ -97,7 +103,7 @@ function App() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar onClick={onClick} />
       {coords[0] !== 0 ? (
         <MapContainer
           data={data}
@@ -107,7 +113,7 @@ function App() {
         ></MapContainer>
       ) : (
         <div>
-          <p>Hola</p>
+          <p>Cargando...</p>
         </div>
       )}
       {loader}
